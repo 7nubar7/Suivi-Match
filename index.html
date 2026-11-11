@@ -13,7 +13,7 @@
 </head>
 <body>
 <div class="app">
- <div class="top"><div class="brand">âš½ <span>Suivi</span> de match</div><span class="pill" id="saveState">LOCAL</span></div>
+ <div class="top"><div class="brand">⚽ <span>Suivi</span> de match</div><span class="pill" id="saveState">LOCAL</span></div>
  <div class="tabs">
   <button type="button" class="tab active" id="tabMatch" data-tab="match">Match</button>
   <button type="button" class="tab" id="tabSquad" data-tab="squad">Effectif</button>
@@ -23,49 +23,42 @@
  <section id="viewMatch">
   <div id="setup">
    <div class="panel">
-    <h1>PrÃ©parer le match</h1><p class="hint">Renseigne la rencontre, puis sÃ©lectionne les joueurs prÃ©sents.</p>
-    <div class="field"><label>Ã‰QUIPE SUIVIE</label><input id="team" placeholder="Ex. FC des Copains"></div>
-    <div class="field"><label>ADVERSAIRE</label><input id="opponent" placeholder="Nom de l'Ã©quipe adverse"></div>
+    <h1>Préparer le match</h1><p class="hint">Renseigne la rencontre, puis sélectionne les joueurs présents.</p>
+    <div class="field"><label>ÉQUIPE SUIVIE</label><input id="team" placeholder="Ex. FC des Copains"></div>
+    <div class="field"><label>ADVERSAIRE</label><input id="opponent" placeholder="Nom de l'équipe adverse"></div>
     <div class="grid">
      <div class="field"><label>DATE</label><input id="date" type="date"></div>
      <div class="field"><label>HEURE</label><input id="time" type="time"></div>
     </div>
     <div class="field"><label>LIEU</label><input id="venue" placeholder="Stade / ville"></div>
-    <div class="field"><label>DURÃ‰E D'UNE MI-TEMPS (MINUTES)</label><input id="halfDuration" type="number" min="1" max="120" value="45"></div>
+    <div class="field"><label>DURÉE D'UNE MI-TEMPS (MINUTES)</label><input id="halfDuration" type="number" min="1" max="120" value="45"></div>
    </div>
    <div class="panel">
     <h2>Composition du jour</h2>
-    <p class="hint">Coche les joueurs prÃ©sents. Les titulaires seront sur le terrain au coup d'envoi ; les autres seront remplaÃ§ants.</p>
+    <p class="hint">Coche les joueurs présents. Les titulaires seront sur le terrain au coup d'envoi ; les autres seront remplaçants.</p>
     <div id="lineupPicker"></div>
-    <button class="primary wide" onclick="startMatch()">Valider la composition et prÃ©parer le match</button>
+    <button class="primary wide" onclick="startMatch()">Valider la composition et préparer le match</button>
    </div>
   </div>
   <div id="live" class="hidden">
    <div class="match-head">
-    <div class="scoreline"><div class="teamname" id="liveTeam">Ã‰quipe</div><div class="score"><span id="scoreHome">0</span> â€“ <span id="scoreAway">0</span></div><div class="teamname" id="liveOpp">Adversaire</div></div>
-    <div class="clock" id="clock">00:00</div><div class="clockmeta" id="clockMeta">1re mi-temps Â· Chrono arrÃªtÃ©</div>
+    <div class="scoreline"><div class="teamname" id="liveTeam">Équipe</div><div class="score"><span id="scoreHome">0</span> – <span id="scoreAway">0</span></div><div class="teamname" id="liveOpp">Adversaire</div></div>
+    <div class="clock" id="clock">00:00</div><div class="clockmeta" id="clockMeta">1re mi-temps · Chrono arrêté</div>
     <div class="clock-controls">
-     <button class="primary" id="startPause" onclick="toggleClock()">â–¶ DÃ©marrer</button>
-     <button class="outline" onclick="finishHalf()">Terminer la pÃ©riode</button>
+     <button class="primary" id="startPause" onclick="toggleClock()">▶ Démarrer</button>
+     <button class="outline" onclick="finishHalf()">Terminer la période</button>
     </div>
    </div>
    <div class="panel">
-    <h2>Enregistrer un Ã©vÃ©nement</h2>
+    <h2>Enregistrer un événement</h2>
     <div class="event-grid">
-     <button class="event goal" onclick="openGoal()"><span style="font-size:25px">âš½</span><b>BUT</b><small>Ã‰quipe ou adversaire</small></button>
-     <button class="event subevent" onclick="openSub()"><span style="font-size:25px">ðŸ”„</span><b>REMPLACEMENT</b><small>EntrÃ©e / sortie</small></button>
-      <button class="event" style="background:#b8860b" onclick="openMarcel()"><span style="font-size:25px">ðŸ†</span><b>ALERTE MARCEL Dâ€™OR</b><small>Immortaliser un ratÃ©</small></button>
-	<button class="event" style="background:#6f42c1"
-onclick="openPuskas()"><span style="font-size:25px">
-âš½</span><b>ALERTE PRIX PUSKAS</b>
-
- <small>Candidat au but de l'annÃ©e</small>
-
-</button>
+     <button class="event goal" onclick="openGoal()"><span style="font-size:25px">⚽</span><b>BUT</b><small>Équipe ou adversaire</small></button>
+     <button class="event subevent" onclick="openSub()"><span style="font-size:25px">🔄</span><b>REMPLACEMENT</b><small>Entrée / sortie</small></button>
+      <button class="event" style="background:#b8860b" onclick="openMarcel()"><span style="font-size:25px">🏆</span><b>ALERTE MARCEL D’OR</b><small>Immortaliser un raté</small></button>
     </div>
    </div>
    <div class="panel">
-    <h2>Chronologie du match</h2><div id="eventLog"><div class="empty">Aucun Ã©vÃ©nement enregistrÃ©.</div></div>
+    <h2>Chronologie du match</h2><div id="eventLog"><div class="empty">Aucun événement enregistré.</div></div>
    </div>
    <button class="danger wide" onclick="endMatch()">Terminer le match</button>
   </div>
@@ -74,20 +67,20 @@ onclick="openPuskas()"><span style="font-size:25px">
  <section id="viewSquad" class="hidden">
   <div class="panel"><h1>Mon effectif</h1><p class="hint">Ajoute les joueurs une seule fois. Tu les retrouveras pour chaque rencontre.</p>
    <div class="grid">
-    <div class="field"><label>NÂ° DE MAILLOT</label><input id="newNumber" type="number" min="0" placeholder="10"></div>
-    <div class="field"><label>NOM DU JOUEUR</label><input id="newName" placeholder="PrÃ©nom Nom"></div>
+    <div class="field"><label>N° DE MAILLOT</label><input id="newNumber" type="number" min="0" placeholder="10"></div>
+    <div class="field"><label>NOM DU JOUEUR</label><input id="newName" placeholder="Prénom Nom"></div>
    </div>
    <button class="primary wide" onclick="addPlayer()">+ Ajouter ce joueur</button>
   </div>
-  <div class="panel"><h2>Joueurs enregistrÃ©s</h2><div id="rosterList"></div></div>
+  <div class="panel"><h2>Joueurs enregistrés</h2><div id="rosterList"></div></div>
  </section>
 
  <section id="viewReport" class="hidden">
-  <div class="panel"><h1>Rapport du match</h1><div id="reportContent"><div class="empty">Le rapport sera disponible dÃ¨s qu'un match aura Ã©tÃ© prÃ©parÃ©.</div></div></div>
+  <div class="panel"><h1>Rapport du match</h1><div id="reportContent"><div class="empty">Le rapport sera disponible dès qu'un match aura été préparé.</div></div></div>
   <button class="primary wide" onclick="exportReport()">Exporter le rapport (.txt)</button>
-  <button class="outline wide" style="margin-top:8px" onclick="newMatch()">PrÃ©parer un nouveau match</button>
+  <button class="outline wide" style="margin-top:8px" onclick="newMatch()">Préparer un nouveau match</button>
  </section>
- <div class="foot">Les donnÃ©es restent enregistrÃ©es dans le navigateur de ce tÃ©lÃ©phone.</div>
+ <div class="foot">Les données restent enregistrées dans le navigateur de ce téléphone.</div>
 </div>
 <div id="modalRoot"></div>
 <script>
@@ -97,7 +90,7 @@ let tickHandle=null;
 function uid(){return 'e'+Date.now().toString(36)+Math.random().toString(36).slice(2,8)}
 function fresh(){return {roster:[],match:null}}
 function load(){try{return JSON.parse(localStorage.getItem(KEY))||fresh()}catch(e){return fresh()}}
-function save(){localStorage.setItem(KEY,JSON.stringify(data));document.getElementById('saveState').textContent='SAUVEGARDÃ‰'}
+function save(){localStorage.setItem(KEY,JSON.stringify(data));document.getElementById('saveState').textContent='SAUVEGARDÉ'}
 function esc(s){return String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
 function showTab(t){
  if(!["match","squad","report"].includes(t))return;
@@ -111,8 +104,8 @@ function showTab(t){
  });
 function renderRoster(){
  const el=document.getElementById('rosterList');
- if(!data.roster.length){el.innerHTML='<div class="empty">Aucun joueur enregistrÃ© pour le moment.</div>';return}
- el.innerHTML=data.roster.slice().sort((a,b)=>Number(a.number)-Number(b.number)).map(p=>`<div class="player-row"><div class="number">${esc(p.number||'â€”')}</div><div class="name">${esc(p.name)}</div><button class="danger small" onclick="deletePlayer('${p.id}')">Supprimer</button></div>`).join('');
+ if(!data.roster.length){el.innerHTML='<div class="empty">Aucun joueur enregistré pour le moment.</div>';return}
+ el.innerHTML=data.roster.slice().sort((a,b)=>Number(a.number)-Number(b.number)).map(p=>`<div class="player-row"><div class="number">${esc(p.number||'—')}</div><div class="name">${esc(p.name)}</div><button class="danger small" onclick="deletePlayer('${p.id}')">Supprimer</button></div>`).join('');
 }
 function addPlayer(){
  const name=document.getElementById('newName').value.trim(),number=document.getElementById('newNumber').value.trim();
@@ -121,8 +114,8 @@ function addPlayer(){
  document.getElementById('newName').value='';document.getElementById('newNumber').value='';renderRoster();renderSetup();
 }
 function deletePlayer(id){
- if(data.match&&!data.match.ended){alert('Termine le match avant de modifier lâ€™effectif.');return}
- if(confirm('Supprimer ce joueur de lâ€™effectif enregistrÃ© ?')){data.roster=data.roster.filter(p=>p.id!==id);save();renderRoster();renderSetup()}
+ if(data.match&&!data.match.ended){alert('Termine le match avant de modifier l’effectif.');return}
+ if(confirm('Supprimer ce joueur de l’effectif enregistré ?')){data.roster=data.roster.filter(p=>p.id!==id);save();renderRoster();renderSetup()}
 }
 function renderSetup(){
  document.getElementById('setup').classList.toggle('hidden',!!data.match&&!data.match.ended);
@@ -131,48 +124,27 @@ function renderSetup(){
  const today=new Date();document.getElementById('date').value ||= today.toISOString().slice(0,10);
  document.getElementById('time').value ||= today.toTimeString().slice(0,5);
  const chosen=data._chosen||{};
- document.getElementById('lineupPicker').innerHTML=data.roster.length?data.roster.slice().sort((a,b)=>Number(a.number)-Number(b.number)).map(p=>`<div class="player-row"><div class="number">${esc(p.number||'â€”')}</div><div class="name">${esc(p.name)}</div><div class="player-actions"><button class="small ${chosen[p.id]==='starter'?'primary':'outline'}" onclick="choosePlayer('${p.id}','starter')">Titulaire</button><button class="small ${chosen[p.id]==='bench'?'blue':'outline'}" onclick="choosePlayer('${p.id}','bench')">RemplaÃ§ant</button></div></div>`).join(''):'<div class="empty">Ajoute dâ€™abord tes joueurs dans lâ€™onglet Effectif.</div>';
+ document.getElementById('lineupPicker').innerHTML=data.roster.length?data.roster.slice().sort((a,b)=>Number(a.number)-Number(b.number)).map(p=>`<div class="player-row"><div class="number">${esc(p.number||'—')}</div><div class="name">${esc(p.name)}</div><div class="player-actions"><button class="small ${chosen[p.id]==='starter'?'primary':'outline'}" onclick="choosePlayer('${p.id}','starter')">Titulaire</button><button class="small ${chosen[p.id]==='bench'?'blue':'outline'}" onclick="choosePlayer('${p.id}','bench')">Remplaçant</button></div></div>`).join(''):'<div class="empty">Ajoute d’abord tes joueurs dans l’onglet Effectif.</div>';
 }
 function choosePlayer(id,role){data._chosen=data._chosen||{};data._chosen[id]=data._chosen[id]===role?'':role;renderSetup()}
 function startMatch(){
  const chosen=data._chosen||{},starters=data.roster.filter(p=>chosen[p.id]==='starter'),bench=data.roster.filter(p=>chosen[p.id]==='bench');
- if(!document.getElementById('team').value.trim()||!document.getElementById('opponent').value.trim()){alert('Renseigne les deux Ã©quipes.');return}
- if(!starters.length){alert('SÃ©lectionne au moins un titulaire.');return}
+ if(!document.getElementById('team').value.trim()||!document.getElementById('opponent').value.trim()){alert('Renseigne les deux équipes.');return}
+ if(!starters.length){alert('Sélectionne au moins un titulaire.');return}
  const m={team:document.getElementById('team').value.trim(),opponent:document.getElementById('opponent').value.trim(),date:document.getElementById('date').value,time:document.getElementById('time').value,venue:document.getElementById('venue').value.trim(),halfDuration:Math.max(1,Number(document.getElementById('halfDuration').value)||45),period:1,firstHalfMinutes:null,elapsed:0,running:false,startedAt:null,ended:false,home:0,away:0,starters:starters.map(p=>({...p})),bench:bench.map(p=>({...p})),onField:starters.map(p=>({...p})),events:[]};
  data.match=m;save();renderSetup();
 }
 function elapsed(){const m=data.match;return m.elapsed+(m.running?Math.max(0,(Date.now()-m.startedAt)/1000):0)}
 function clockText(s){s=Math.floor(s);return String(Math.floor(s/60)).padStart(2,'0')+':'+String(s%60).padStart(2,'0')}
-function matchMinute(){
-
- const m=data.match;
- const current=Math.floor(elapsed()/60)+1;
-
- if(m.period===1){
-
-   if(current<=m.halfDuration){
-      return current;
-   }
-
-   return `${m.halfDuration}+${current-m.halfDuration}`;
- }
-
- const secondHalfMinute=m.halfDuration+current;
-
- if(secondHalfMinute<=(m.halfDuration*2)){
-      return secondHalfMinute;
- }
-
- return `${m.halfDuration*2}+${secondHalfMinute-(m.halfDuration*2)}`;
-}
+function matchMinute(){const m=data.match;return (m.period===2?(m.firstHalfMinutes??m.halfDuration):0)+Math.floor(elapsed()/60)+1}
 function renderLive(){
  const m=data.match;if(!m)return;
  document.getElementById('liveTeam').textContent=m.team;document.getElementById('liveOpp').textContent=m.opponent;
  document.getElementById('scoreHome').textContent=m.home;document.getElementById('scoreAway').textContent=m.away;
  document.getElementById('clock').textContent=clockText(elapsed());
- document.getElementById('clockMeta').textContent=(m.period===1?'1re':'2e')+' mi-temps Â· '+(m.running?'Chrono en cours':'Chrono arrÃªtÃ©');
- document.getElementById('startPause').textContent=m.running?'â¸ Mettre en pause':'â–¶ DÃ©marrer / reprendre';
- document.getElementById('eventLog').innerHTML=m.events.length?m.events.slice().reverse().map(e=>`<div class="log" style="align-items:flex-start"><div class="logtime">${e.minute}</div><div class="logtext">${esc(e.label)}<small>${esc(e.detail||'')}</small></div>${['goal','sub','marcel'].includes(e.type)?`<button type="button" class="outline small" onclick="editEvent('${e.id}')">Modifier</button><button type="button" class="danger small" onclick="deleteEvent('${e.id}')">Supprimer</button>`:''}</div>`).join(''):'<div class="empty">Aucun Ã©vÃ©nement enregistrÃ©.</div>';
+ document.getElementById('clockMeta').textContent=(m.period===1?'1re':'2e')+' mi-temps · '+(m.running?'Chrono en cours':'Chrono arrêté');
+ document.getElementById('startPause').textContent=m.running?'⏸ Mettre en pause':'▶ Démarrer / reprendre';
+ document.getElementById('eventLog').innerHTML=m.events.length?m.events.slice().reverse().map(e=>`<div class="log" style="align-items:flex-start"><div class="logtime">${e.minute}'</div><div class="logtext">${esc(e.label)}<small>${esc(e.detail||'')}</small></div>${['goal','sub','marcel'].includes(e.type)?`<button type="button" class="outline small" onclick="editEvent('${e.id}')">Modifier</button><button type="button" class="danger small" onclick="deleteEvent('${e.id}')">Supprimer</button>`:''}</div>`).join(''):'<div class="empty">Aucun événement enregistré.</div>';
 }
 function persistElapsed(){const m=data.match;if(m?.running){m.elapsed=elapsed();m.startedAt=null;m.running=false}}
 function toggleClock(){
@@ -182,10 +154,10 @@ function toggleClock(){
 }
 function finishHalf(){
  const m=data.match;if(!m)return;
- if(!confirm(m.period===1?'Terminer la premiÃ¨re mi-temps ?':'Terminer la deuxiÃ¨me mi-temps ?'))return;
+ if(!confirm(m.period===1?'Terminer la première mi-temps ?':'Terminer la deuxième mi-temps ?'))return;
  persistElapsed();m.events.push({id:uid(),type:'period',minute:matchMinute(),label:m.period===1?'Fin de la 1re mi-temps':'Fin de la 2e mi-temps',detail:''});
- if(m.period===1){m.firstHalfMinutes=m.halfDuration;m.period=2;m.elapsed=0;m.running=false;m.startedAt=null;alert('Mi-temps terminÃ©e. Tu peux dÃ©marrer la deuxiÃ¨me pÃ©riode.')}
- else{m.ended=true;m.running=false;alert('Match terminÃ©. Le rapport est disponible dans lâ€™onglet Rapport.')}
+ if(m.period===1){m.firstHalfMinutes=Math.floor(m.elapsed/60);m.period=2;m.elapsed=0;m.running=false;m.startedAt=null;alert('Mi-temps terminée. Tu peux démarrer la deuxième période.')}
+ else{m.ended=true;m.running=false;alert('Match terminé. Le rapport est disponible dans l’onglet Rapport.')}
  save();renderSetup();
 }
 function openModal(title,body,onSave){
@@ -194,126 +166,49 @@ function openModal(title,body,onSave){
  document.getElementById('modalSave').onclick=()=>{if(onSave()!==false)closeModal()};
 }
 function closeModal(){document.getElementById('modalRoot').innerHTML=''}
-function selectOptions(arr,placeholder='Choisirâ€¦'){return `<option value="">${placeholder}</option>`+arr.map(p=>`<option value="${p.id}">${p.number?'NÂ°'+esc(p.number)+' â€“ ':''}${esc(p.name)}</option>`).join('')}
+function selectOptions(arr,placeholder='Choisir…'){return `<option value="">${placeholder}</option>`+arr.map(p=>`<option value="${p.id}">${p.number?'N°'+esc(p.number)+' – ':''}${esc(p.name)}</option>`).join('')}
 function openGoal(){
  const m=data.match;if(!m)return;
- openModal('Enregistrer un but',`<div class="field"><label>Ã‰QUIPE QUI A MARQUÃ‰</label><select id="goalSide"><option value="home">${esc(m.team)}</option><option value="away">${esc(m.opponent)}</option></select></div><div id="scorerArea"></div><div id="assistArea"></div>`,()=>{
+ openModal('Enregistrer un but',`<div class="field"><label>ÉQUIPE QUI A MARQUÉ</label><select id="goalSide"><option value="home">${esc(m.team)}</option><option value="away">${esc(m.opponent)}</option></select></div><div id="scorerArea"></div><div id="assistArea"></div>`,()=>{
  const side=document.getElementById('goalSide').value;
  if(side==='home'){
-  const scorer=document.getElementById('scorer').value;if(!scorer){alert('SÃ©lectionne le buteur.');return false}
+  const scorer=document.getElementById('scorer').value;if(!scorer){alert('Sélectionne le buteur.');return false}
   const assist=document.getElementById('assist').value;const p=m.onField.concat(m.bench).find(x=>x.id===scorer),a=m.onField.concat(m.bench).find(x=>x.id===assist);
-  m.home++;m.events.push({id:uid(),type:'goal',minute:matchMinute(),side:'home',scorer,assist,label:'But '+m.team,detail:(p?.name||'')+(a?' Â· Passe : '+a.name:' Â· Sans passe dÃ©cisive')});
+  m.home++;m.events.push({id:uid(),type:'goal',minute:matchMinute(),side:'home',scorer,assist,label:'But '+m.team,detail:(p?.name||'')+(a?' · Passe : '+a.name:' · Sans passe décisive')});
  }else{m.away++;m.events.push({id:uid(),type:'goal',minute:matchMinute(),side:'away',label:'But '+m.opponent,detail:''})}
  save();renderLive();
  });
  const update=()=>{
   const home=document.getElementById('goalSide').value==='home';
   document.getElementById('scorerArea').innerHTML=home?`<div class="field"><label>BUTEUR</label><select id="scorer">${selectOptions(m.onField)}</select></div>`:'';
-  document.getElementById('assistArea').innerHTML=home?`<div class="field"><label>PASSEUR DÃ‰CISIF (FACULTATIF)</label><select id="assist"><option value="">Aucune passe dÃ©cisive</option>${m.onField.map(p=>`<option value="${p.id}">${p.number?'NÂ°'+esc(p.number)+' â€“ ':''}${esc(p.name)}</option>`).join('')}</select></div>`:'';
+  document.getElementById('assistArea').innerHTML=home?`<div class="field"><label>PASSEUR DÉCISIF (FACULTATIF)</label><select id="assist"><option value="">Aucune passe décisive</option>${m.onField.map(p=>`<option value="${p.id}">${p.number?'N°'+esc(p.number)+' – ':''}${esc(p.name)}</option>`).join('')}</select></div>`:'';
  };
  document.getElementById('goalSide').onchange=update;update();
 }
 function openSub(){
  const m=data.match;if(!m)return;
- if(!m.bench.length){alert('Aucun remplaÃ§ant disponible.');return}
+ if(!m.bench.length){alert('Aucun remplaçant disponible.');return}
  openModal('Enregistrer un remplacement',`<div class="field"><label>JOUEUR QUI SORT</label><select id="out">${selectOptions(m.onField)}</select></div><div class="field"><label>JOUEUR QUI ENTRE</label><select id="in">${selectOptions(m.bench)}</select></div>`,()=>{
  const out=document.getElementById('out').value,inn=document.getElementById('in').value;
- if(!out||!inn){alert('SÃ©lectionne les deux joueurs.');return false}
+ if(!out||!inn){alert('Sélectionne les deux joueurs.');return false}
  const po=m.onField.find(p=>p.id===out),pi=m.bench.find(p=>p.id===inn);
  m.onField=m.onField.filter(p=>p.id!==out);m.onField.push(pi);m.bench=m.bench.filter(p=>p.id!==inn);m.bench.push(po);
- m.events.push({id:uid(),type:'sub',minute:matchMinute(),out:po.id,in:pi.id,label:'Remplacement',detail:(po.number?'NÂ°'+po.number+' ':'')+po.name+' sort Â· '+(pi.number?'NÂ°'+pi.number+' ':'')+pi.name+' entre'});
+ m.events.push({id:uid(),type:'sub',minute:matchMinute(),out:po.id,in:pi.id,label:'Remplacement',detail:(po.number?'N°'+po.number+' ':'')+po.name+' sort · '+(pi.number?'N°'+pi.number+' ':'')+pi.name+' entre'});
  save();renderLive();
  });
 }
 
 function openMarcel(){
  const m=data.match,players=m.onField.concat(m.bench);
- openModal('Alerte Marcel dâ€™Or',`<div class="field"><label>JOUEUR</label><select id="marcelPlayer">${selectOptions(players)}</select></div><div class="field"><label>COMMENTAIRE</label><textarea id="marcelComment" rows="4" style="width:100%;padding:12px;border:1px solid var(--line);border-radius:11px;font:inherit" placeholder="Raconte-nous ce ratÃ© mÃ©morableâ€¦"></textarea></div>`,()=>{
+ openModal('Alerte Marcel d’Or',`<div class="field"><label>JOUEUR</label><select id="marcelPlayer">${selectOptions(players)}</select></div><div class="field"><label>COMMENTAIRE</label><textarea id="marcelComment" rows="4" style="width:100%;padding:12px;border:1px solid var(--line);border-radius:11px;font:inherit" placeholder="Raconte-nous ce raté mémorable…"></textarea></div>`,()=>{
   const id=document.getElementById('marcelPlayer').value,comment=document.getElementById('marcelComment').value.trim(),p=players.find(x=>x.id===id);
-  if(!p){alert('SÃ©lectionne le joueur.');return false}
-  m.events.push({id:uid(),type:'marcel',minute:matchMinute(),player:id,label:'ðŸ† Alerte Marcel dâ€™Or',detail:p.name+(comment?' Â· '+comment:'')});save();renderLive();
+  if(!p){alert('Sélectionne le joueur.');return false}
+  m.events.push({id:uid(),type:'marcel',minute:matchMinute(),player:id,label:'🏆 Alerte Marcel d’Or',detail:p.name+(comment?' · '+comment:'')});save();renderLive();
  });
-}
-function openPuskas(){
-
- const m=data.match,players=m.onField.concat(m.bench);
-
- openModal(
-
- 'Alerte Prix Puskas',
-
- `
- <div class="field">
-    <label>JOUEUR</label>
-    <select id="puskasPlayer">
-       ${selectOptions(players)}
-    </select>
- </div>
-
- <div class="field">
-    <label>TITRE DU BUT</label>
-    <input id="puskasTitle"
-           placeholder="Reprise de volÃ©e lucarne">
- </div>
-
- <div class="field">
-    <label>DESCRIPTION</label>
-
-    <textarea
-      id="puskasDetail"
-      rows="4"
-      style="
-         width:100%;
-         padding:12px;
-         border:1px solid var(--line);
-         border-radius:11px;
-         font:inherit"
-      placeholder="Décris le but">
-    </textarea>
- </div>
-  `,
-
-  ()=>{
-const playerId =
- document.getElementById("puskasPlayer").value;
-
-const player =
- players.find(p=>p.id===playerId);
-    const title=
-      document.getElementById("puskasTitle")
-      .value.trim();
-
-    const detail=
-      document.getElementById("puskasDetail")
-      .value.trim();
-
-    if(!title){
-        alert("Saisis un titre.");
-        return false;
-    }
-if(!player){
- alert("Sélectionne le joueur.");
- return false;
-}
-m.events.push({
-  id:uid(),
-  type:'puskas',
-  minute:matchMinute(),
-  player:player.name,
-  title:title,
-  detail:detail,
-  label:'âš½ Prix Puskas'
-});
-
-    save();
-    renderLive();
-  }
- );
-
 }
 function findEvent(id){return data.match?.events.find(e=>e.id===id)}
 function deleteEvent(id){
- const m=data.match,e=findEvent(id);if(!e||!confirm('Supprimer dÃ©finitivement cet Ã©vÃ©nement ?'))return;
+ const m=data.match,e=findEvent(id);if(!e||!confirm('Supprimer définitivement cet événement ?'))return;
  if(e.type==='goal'){const home=e.side==='home'||(!e.side&&e.label==='But '+m.team);if(home)m.home=Math.max(0,m.home-1);else m.away=Math.max(0,m.away-1)}
  if(e.type==='sub'&&e.out&&e.in){
   const entered=m.onField.find(p=>p.id===e.in),left=m.bench.find(p=>p.id===e.out);
@@ -325,63 +220,40 @@ function editEvent(id){
  const m=data.match,e=findEvent(id);if(!e)return;
  if(e.type==='marcel'){
   const ps=m.onField.concat(m.bench);
-  openModal('Modifier lâ€™alerte Marcel dâ€™Or',`<div class="field"><label>JOUEUR</label><select id="ep">${selectOptions(ps)}</select></div><div class="field"><label>COMMENTAIRE</label><textarea id="ec" rows="4" style="width:100%;padding:12px;border:1px solid var(--line);border-radius:11px;font:inherit"></textarea></div>`,()=>{
-   const id=document.getElementById('ep').value,p=ps.find(x=>x.id===id),c=document.getElementById('ec').value.trim();if(!p)return false;e.player=id;e.detail=p.name+(c?' Â· '+c:'');save();renderLive();renderReport();
-  });document.getElementById('ep').value=e.player;document.getElementById('ec').value=e.detail.split(' Â· ').slice(1).join(' Â· ');return;
+  openModal('Modifier l’alerte Marcel d’Or',`<div class="field"><label>JOUEUR</label><select id="ep">${selectOptions(ps)}</select></div><div class="field"><label>COMMENTAIRE</label><textarea id="ec" rows="4" style="width:100%;padding:12px;border:1px solid var(--line);border-radius:11px;font:inherit"></textarea></div>`,()=>{
+   const id=document.getElementById('ep').value,p=ps.find(x=>x.id===id),c=document.getElementById('ec').value.trim();if(!p)return false;e.player=id;e.detail=p.name+(c?' · '+c:'');save();renderLive();renderReport();
+  });document.getElementById('ep').value=e.player;document.getElementById('ec').value=e.detail.split(' · ').slice(1).join(' · ');return;
  }
  if(e.type==='goal'){
   const ps=m.onField.concat(m.bench);
-  openModal('Modifier le but',`<div class="field"><label>Ã‰QUIPE</label><select id="es"><option value="home">${esc(m.team)}</option><option value="away">${esc(m.opponent)}</option></select></div><div id="eg"></div>`,()=>{
+  openModal('Modifier le but',`<div class="field"><label>ÉQUIPE</label><select id="es"><option value="home">${esc(m.team)}</option><option value="away">${esc(m.opponent)}</option></select></div><div id="eg"></div>`,()=>{
    const side=document.getElementById('es').value,sc=document.getElementById('esc')?.value||'',as=document.getElementById('eas')?.value||'';if(side==='home'&&!sc){alert('Choisis le buteur.');return false}
    const wasHome=e.side==='home'||(!e.side&&e.label==='But '+m.team);if(wasHome!==(side==='home')){if(wasHome)m.home=Math.max(0,m.home-1);else m.away=Math.max(0,m.away-1);if(side==='home')m.home++;else m.away++}
-   const p=ps.find(x=>x.id===sc),a=ps.find(x=>x.id===as);e.side=side;e.scorer=sc;e.assist=as;e.label='But '+(side==='home'?m.team:m.opponent);e.detail=side==='home'?(p?.name||'')+(a?' Â· Passe : '+a.name:' Â· Sans passe dÃ©cisive'):'';save();renderLive();renderReport();
+   const p=ps.find(x=>x.id===sc),a=ps.find(x=>x.id===as);e.side=side;e.scorer=sc;e.assist=as;e.label='But '+(side==='home'?m.team:m.opponent);e.detail=side==='home'?(p?.name||'')+(a?' · Passe : '+a.name:' · Sans passe décisive'):'';save();renderLive();renderReport();
   });
   const update=()=>{const home=document.getElementById('es').value==='home';document.getElementById('eg').innerHTML=home?`<div class="field"><label>BUTEUR</label><select id="esc">${selectOptions(ps)}</select></div><div class="field"><label>PASSEUR FACULTATIF</label><select id="eas"><option value="">Aucune passe</option>${ps.map(p=>`<option value="${p.id}">${esc(p.name)}</option>`).join('')}</select></div>`:'';if(home){document.getElementById('esc').value=e.scorer||'';document.getElementById('eas').value=e.assist||''}};
   document.getElementById('es').value=e.side||(e.label==='But '+m.team?'home':'away');document.getElementById('es').onchange=update;update();return;
  }
- if(e.type==='sub')alert('Pour Ã©viter de dÃ©synchroniser les compositions, la modification des remplacements sera finalisÃ©e dans une prochaine rÃ©vision. Tu peux toutefois supprimer le remplacement et le ressaisir.');
+ if(e.type==='sub')alert('Pour éviter de désynchroniser les compositions, la modification des remplacements sera finalisée dans une prochaine révision. Tu peux toutefois supprimer le remplacement et le ressaisir.');
 }
 
 function endMatch(){
  const m=data.match;if(!m)return;
- if(!confirm('Terminer dÃ©finitivement ce match ?'))return;
+ if(!confirm('Terminer définitivement ce match ?'))return;
  persistElapsed();m.ended=true;m.events.push({id:uid(),type:'period',minute:matchMinute(),label:'Fin du match',detail:''});save();renderSetup();showTab('report');
 }
 function renderReport(){
- const m=data.match,el=document.getElementById('reportContent');if(!m){el.innerHTML='<div class="empty">Aucun match prÃ©parÃ©.</div>';return}
+ const m=data.match,el=document.getElementById('reportContent');if(!m){el.innerHTML='<div class="empty">Aucun match préparé.</div>';return}
  const goals=m.events.filter(e=>e.type==='goal'),subs=m.events.filter(e=>e.type==='sub'),marcels=m.events.filter(e=>e.type==='marcel');
- el.innerHTML=`<div class="muted">${esc(m.date||'')} Â· ${esc(m.time||'')} Â· ${esc(m.venue||'')}</div><div class="report-score">${m.home} â€“ ${m.away}</div><div style="display:flex;justify-content:space-around;font-weight:750;margin-bottom:14px"><span>${esc(m.team)}</span><span>${esc(m.opponent)}</span></div><div class="section-label">BUTS (${goals.length})</div>${goals.length?goals.map(e=>`<div class="log"><div class="logtime">${e.minute}</div><div class="logtext">${esc(e.label)}<small>${esc(e.detail||'')}</small></div></div>`).join(''):'<div class="muted">Aucun but enregistrÃ©.</div>'}<div class="section-label">REMPLACEMENTS (${subs.length})</div>${subs.length?subs.map(e=>`<div class="log"><div class="logtime">${e.minute}</div><div class="logtext">${esc(e.detail)}</div></div>`).join(''):'<div class="muted">Aucun remplacement enregistrÃ©.</div>'}<div class="section-label">NOMINÃ‰S AU MARCEL Dâ€™OR (${marcels.length})</div>${marcels.length?marcels.map(e=>`<div class="log"><div class="logtime">${e.minute}&#39;</div><div class="logtext">${esc(e.label)}<small>${esc(e.detail||'')}</small></div></div>`).join(''):'<div class="muted">Aucune alerte Marcel dâ€™Or.</div>'}<div class="section-label">
-PRIX PUSKAS (${puskas.length})
-</div>
-
-${puskas.length
- ? puskas.map(e=>`
-   <div class="log">
-      <div class="logtime">${e.minute}</div>
-      <div class="logtext">
-        ${esc(e.label)}
-${esc(e.player)}
-
-<small>
-${esc(e.title)}
-</small>
-
-<small>
-${esc(e.detail)}
-</small>
-      </div>
-   </div>
- `).join('')
- : '<div class="muted">Aucune nomination Prix Puskas.</div>'
-}<div class="section-label">CHRONOLOGIE COMPLÃˆTE</div>${m.events.length?m.events.map(e=>`<div class="log"><div class="logtime">${e.minute}</div><div class="logtext">${esc(e.label)}<small>${esc(e.detail||'')}</small></div></div>`).join(''):'<div class="muted">Aucun Ã©vÃ©nement.</div>'}`;
+ el.innerHTML=`<div class="muted">${esc(m.date||'')} · ${esc(m.time||'')} · ${esc(m.venue||'')}</div><div class="report-score">${m.home} – ${m.away}</div><div style="display:flex;justify-content:space-around;font-weight:750;margin-bottom:14px"><span>${esc(m.team)}</span><span>${esc(m.opponent)}</span></div><div class="section-label">BUTS (${goals.length})</div>${goals.length?goals.map(e=>`<div class="log"><div class="logtime">${e.minute}'</div><div class="logtext">${esc(e.label)}<small>${esc(e.detail||'')}</small></div></div>`).join(''):'<div class="muted">Aucun but enregistré.</div>'}<div class="section-label">REMPLACEMENTS (${subs.length})</div>${subs.length?subs.map(e=>`<div class="log"><div class="logtime">${e.minute}'</div><div class="logtext">${esc(e.detail)}</div></div>`).join(''):'<div class="muted">Aucun remplacement enregistré.</div>'}<div class="section-label">NOMINÉS AU MARCEL D’OR (${marcels.length})</div>${marcels.length?marcels.map(e=>`<div class="log"><div class="logtime">${e.minute}&#39;</div><div class="logtext">${esc(e.label)}<small>${esc(e.detail||'')}</small></div></div>`).join(''):'<div class="muted">Aucune alerte Marcel d’Or.</div>'}<div class="section-label">CHRONOLOGIE COMPLÈTE</div>${m.events.length?m.events.map(e=>`<div class="log"><div class="logtime">${e.minute}'</div><div class="logtext">${esc(e.label)}<small>${esc(e.detail||'')}</small></div></div>`).join(''):'<div class="muted">Aucun événement.</div>'}`;
 }
 function exportReport(){
- const m=data.match;if(!m){alert('Aucun rapport Ã  exporter.');return}
- const lines=[`RAPPORT DU MATCH`,` ${m.team} ${m.home} - ${m.away} ${m.opponent}`,`${m.date||''} ${m.time||''} Â· ${m.venue||''}`,'','BUTS',...m.events.filter(e=>e.type==='goal').map(e=>`${e.minute} - ${e.label} - ${e.detail}`),'','REMPLACEMENTS',...m.events.filter(e=>e.type==='sub').map(e=>`${e.minute} - ${e.detail}`),'','MARCEL Dâ€™OR',...m.events.filter(e=>e.type==='marcel').map(e=>`${e.minute} - ${e.detail}`),'','PRIX PUSKAS',...m.events.filter(e=>e.type==='puskas').map(e=>`${e.minute} - ${e.detail}`),'','CHRONOLOGIE',...m.events.map(e=>`${e.minute} - ${e.label} - ${e.detail||''}`)];
+ const m=data.match;if(!m){alert('Aucun rapport à exporter.');return}
+ const lines=[`RAPPORT DU MATCH`,` ${m.team} ${m.home} - ${m.away} ${m.opponent}`,`${m.date||''} ${m.time||''} · ${m.venue||''}`,'','BUTS',...m.events.filter(e=>e.type==='goal').map(e=>`${e.minute}' - ${e.label} - ${e.detail}`),'','REMPLACEMENTS',...m.events.filter(e=>e.type==='sub').map(e=>`${e.minute}' - ${e.detail}`),'','MARCEL D’OR',...m.events.filter(e=>e.type==='marcel').map(e=>`${e.minute}' - ${e.detail}`),'','CHRONOLOGIE',...m.events.map(e=>`${e.minute}' - ${e.label} - ${e.detail||''}`)];
  const blob=new Blob([lines.join('\n')],{type:'text/plain;charset=utf-8'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='rapport-match.txt';a.click();URL.revokeObjectURL(url);
 }
 function newMatch(){
- if(data.match&&!data.match.ended&&!confirm('Le match en cours sera remplacÃ©. Continuer ?'))return;
+ if(data.match&&!data.match.ended&&!confirm('Le match en cours sera remplacé. Continuer ?'))return;
  data.match=null;data._chosen={};save();showTab('match');renderSetup();
 }
 if(data.match){data.match.events.forEach(e=>{if(!e.id)e.id=uid()});}
